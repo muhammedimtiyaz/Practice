@@ -59,12 +59,12 @@ def reverse(string)
     reverse(string[1..-1]) + reverse
 end
 
-p reverse("house") # => "esuoh"
-p reverse("dog") # => "god"
-p reverse("atom") # => "mota"
-p reverse("q") # => "q"
-p reverse("id") # => "di"
-p reverse("") # => ""
+# p reverse("house") # => "esuoh"
+# p reverse("dog") # => "god"
+# p reverse("atom") # => "mota"
+# p reverse("q") # => "q"
+# p reverse("id") # => "di"
+# p reverse("") # => ""
 
 
 
@@ -224,4 +224,20 @@ end
 # p subsets([1, 2]) # => [[], [1], [2], [1, 2]]
 # p subsets([1, 2, 3])
 # # => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
+
+def quicksort(array)
+    return array if array.length <= 1
+
+    pivot = array.first
+    left = array.select { |el| el < pivot }
+    right = array[1..-1].select { |el| el >= pivot }
+
+    sorted_left = quicksort(left)
+    sorted_right = quicksort(right)
+
+    sorted_left + [pivot] + sorted_right
+end
+
+p quicksort([4,5,2,1,3,4])
+p quicksort([2,4,6,7,1,354,6])
 
